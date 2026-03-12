@@ -13,31 +13,38 @@ import java.util.Arrays;
 public class IntList {
 	
 	/**
+	 * @invar | elementen != null
+	 * 
+	 * @representationObject
+	 */
+	private int[] elementen;
+	
+	/**
 	 * @post | result != null
 	 * @creates | result 
 	 */
 	public int[] getElementen(){
-		throw new RuntimeException("Not Yet Implemented");
+		return elementen.clone();
 	}
 	
 	/**
 	 * post | result == getElementen().length
 	 */
 	public int getLengte(){
-		throw new RuntimeException("Not Yet Implemented");
+		return elementen.length;
 	}
 	/**
 	 * @pre | 0 <= index && index < getLengte()
 	 * @post | result == getElementen()[index]
 	 */
 	public int getElement(int index) {
-		throw new RuntimeException("Not Yet Implemented");
+		return elementen[index];
 	}
 	/**
 	 * @post | getLengte() ==0
 	 */
 	public IntList() {
-		throw new RuntimeException("Not Yet Implemented");
+		elementen = new int[] {};
 	}
 	
 	/**
@@ -47,7 +54,10 @@ public class IntList {
 	 * @post | getElement(old(getLengte()))==element 
 	 */
 	public void add(int element) {
-		throw new RuntimeException("Not Yet Implemented");
+		int[] newElementen = new int[elementen.length + 1];
+		System.arraycopy(elementen, 0, newElementen, 0, elementen.length);
+		newElementen[elementen.length]=element;
+		elementen = newElementen;
 	}
 	
 	/**
@@ -57,7 +67,9 @@ public class IntList {
 	 * @post| Arrays.equals(getElementen(),0, getLengte(),old(getElementen()),0, getLengte())
 	 */
 	public void removeLast() {
-		throw new RuntimeException("Not Yet Implemented"); 
+		int [] newElementen = new int[elementen.length-1];
+		System.arraycopy(elementen, 0, newElementen, 0, newElementen.length);
+		elementen = newElementen;
 	}
 	
 }
